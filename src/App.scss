@@ -1,0 +1,183 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+$stoneBlack: #1e1d23;
+$stone900: rgb(49, 47, 56);
+$stone800: #45434f;
+$stone700: #5a5767;
+$stone300: #a3a5b4;
+$stone100: #e8e9ec;
+$amber: #feae44;
+
+// mixins
+@mixin flexbox($direction, $items, $content, $gap) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $items;
+  justify-content: $content;
+  gap: $gap;
+}
+@mixin fluidType {
+  font-size: clamp(1.5rem, 5.543vw + 0.066rem, 4.5rem);
+  line-height: clamp(2.1rem, 6.097vw + 0.522rem, 5.4rem);
+}
+@mixin fluidSpacing {
+  padding: clamp(1.5rem, 5.543vw + 0.066rem, 4.5rem);
+}
+
+@mixin rounded {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+// App styles
+body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  background: $stone900;
+  color: $stone300;
+}
+a:link,
+a:visited {
+  color: $stone100;
+  text-decoration: none;
+}
+a:hover {
+  color: $amber;
+}
+.App {
+  width: 100%;
+  min-height: 100vh;
+  @include flexbox(column, stretch, space-between, 0);
+}
+header {
+  padding: 30px 0px;
+  background: $stoneBlack;
+}
+main {
+  padding: 0px 0px;
+  flex: 1;
+}
+footer {
+  padding: 30px 0px;
+  background: $stoneBlack;
+}
+.wrapper {
+  width: 100%;
+  max-width: 1280px;
+  padding: 0px 20px;
+  margin: 0px auto;
+}
+.no-outline:focus {
+  outline: none;
+}
+
+//App Header
+.appHeader {
+  @include flexbox(row, center, space-between, 20px);
+  .headerLeft {
+    @include flexbox(row, stretch, space-between, 20px);
+    flex: 1;
+  }
+}
+
+//searchBox
+.searchBox {
+  position: relative;
+  border-radius: 5px;
+  background: $stone700;
+  width: 100%;
+  max-width: 300px;
+  .searchField {
+    padding: 10px 10px;
+    color: $stone100;
+    border: none;
+    background: transparent;
+    width: 100%;
+  }
+}
+
+// section title
+.sectionTitle {
+  text-transform: uppercase;
+  color: $stone100;
+  padding: 30px 0px;
+  font-size: 20px;
+  color: $amber;
+}
+
+//Gallery
+.gallery {
+  display: grid;
+  grid-gap: 30px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  padding: 30px 0px;
+  border-bottom: 1px solid $stone700;
+  border-top: 1px solid $stone700;
+}
+
+//Movie Card
+.movieCard {
+  .moviePoster {
+    @include rounded;
+    cursor: pointer;
+  }
+  .movieCardFooter {
+    padding: 20px 0px 0px 0px;
+    display: grid;
+    grid-template-columns: auto 24px;
+    gap: 10px;
+    h2.movieCardTitle {
+      font-size: 16px;
+      line-height: 1.2;
+      color: $stone100;
+      margin: 0px 0px 5px 0px;
+    }
+    p.movieCardRating {
+      font-size: 14px;
+      background: url(./Assets/star.svg) no-repeat;
+      background-size: 14px;
+      background-position: center left;
+      padding-left: 20px;
+    }
+    .favButton {
+      cursor: pointer;
+    }
+  }
+}

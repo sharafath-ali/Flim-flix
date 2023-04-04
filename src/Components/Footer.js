@@ -2,10 +2,9 @@ import React from "react";
 
 function Footer() {
   return (
-    <div>
-      Footer
-      <h1>dhj</h1>
-    </div>
+    <footer>
+      <div class="wrapper"></div>
+    </footer>
   );
 }
 
