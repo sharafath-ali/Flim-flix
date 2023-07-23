@@ -7,7 +7,7 @@ function Moviecard(p) {
       <div className="movieCard">
         <img
           className="moviePoster"
-          src={`https://image.tmdb.org/t/p/w500/${e.backdrop_path}`}
+          src={`https://image.tmdb.org/t/p/original/${e.backdrop_path}`}
           alt=""
         />
         <div className="movieCardFooter">
