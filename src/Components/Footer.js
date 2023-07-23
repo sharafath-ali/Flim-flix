@@ -1,9 +1,12 @@
 import React from "react";
+import Wrapper from "./Wrapper";
 
 function Footer() {
   return (
     <footer>
-      <div class="wrapper"></div>
+      <Wrapper>
+        <p>Movie website built with ReactJS</p>
+     </Wrapper>
     </footer>
   );
 }

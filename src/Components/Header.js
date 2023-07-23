@@ -1,9 +1,10 @@
 import React from "react";
+import Wrapper from "./Wrapper";
 
 function Header() {
   return (
     <header>
-      <div className="wrapper">
+      <Wrapper>
         <div className="appHeader">
           <div className="headerLeft">
             <h1>ReactFLIX</h1>
@@ -12,7 +13,7 @@ function Header() {
             <input className="searchField" type="search" />
           </div>
         </div>
-      </div>
+      </Wrapper>
     </header>
   );
 }

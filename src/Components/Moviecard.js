@@ -3,7 +3,7 @@ import React from "react";
 function Moviecard(p) {
   const { e } = p;
   return (
-    <div className="gallery">
+    //<div className="gallery">
       <div className="movieCard">
         <img
           className="moviePoster"
@@ -17,8 +17,8 @@ function Moviecard(p) {
           </div>
           <div className="favButton">#</div>
         </div>
+      {/* </div> */}
       </div>
-    </div>
   );
 }
 

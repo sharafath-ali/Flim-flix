@@ -1,0 +1,20 @@
+// mixins
+@mixin flexbox($direction, $items, $content, $gap) {
+    display: flex;
+    flex-direction: $direction;
+    align-items: $items;
+    justify-content: $content;
+    gap: $gap;
+  }
+  @mixin fluidType {
+    font-size: clamp(1.5rem, 5.543vw + 0.066rem, 4.5rem);
+    line-height: clamp(2.1rem, 6.097vw + 0.522rem, 5.4rem);
+  }
+  @mixin fluidSpacing {
+    padding: clamp(1.5rem, 5.543vw + 0.066rem, 4.5rem);
+  }
+  
+  @mixin rounded {
+    border-radius: 10px;
+    overflow: hidden;
+  }
