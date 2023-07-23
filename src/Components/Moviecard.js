@@ -7,13 +7,13 @@ function Moviecard(p) {
       <div className="movieCard">
         <img
           className="moviePoster"
-          src="https://image.tmdb.org/t/p/w500/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg"
+          src={`https://image.tmdb.org/t/p/w500/${e.backdrop_path}`}
           alt=""
         />
         <div className="movieCardFooter">
           <div className="movieCardDetails">
             <h2 className="movieCardTitle">{e.title}</h2>
-            <p className="movieCardRating">{e.rating}</p>
+            <p className="movieCardRating">{e.vote_average}</p>
           </div>
           <div className="favButton">#</div>
         </div>
