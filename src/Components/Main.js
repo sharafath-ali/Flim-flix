@@ -11,15 +11,13 @@ function Main() {
     axios({
       method: "get",
       url: "https://api.themoviedb.org/3/movie/popular",
-      params: { api_key: "0ada35bf73cf143eda08f5ff4af625f9" },
+      params: {
+         api_key: "0ada35bf73cf143eda08f5ff4af625f9" ,
+         page: Page
+    },
     }).then(({data}) => {setMovies(data.results);
     setTotalPages(data.total_pages); })
-  }, []);
-  useEffect(() => {
-    
-  console.log(popMovies)
-    
-  }, [popMovies])
+  }, [Page]);
   
   return (
     <main>
@@ -33,7 +31,7 @@ function Main() {
             return <Moviecard key={movie.id} e={movie} />;
           })}
         </div>
-      <Pagination total={TotalPages} page={Page}/>
+      <Pagination total={TotalPages} page={Page} setPage={setPage}/>
       </Wrapper>
     </main>
   );
