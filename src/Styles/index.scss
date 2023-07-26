@@ -3,7 +3,10 @@
 @import "mixins";
 
 // App styles
-
+.loader {
+ color: $amber !important;
+ background-color: $amber;
+}
 body {
   font-family: "Plus Jakarta Sans", sans-serif;
   background: $stone900;
@@ -117,3 +120,375 @@ footer {
     }
   }
 }
+
+
+// .notFound {
+//   padding: 50px 0px;
+//   text-align: center;
+//   h1 {
+//     margin-bottom: 20px;
+//     color: $stone100;
+//     @include fluidType;
+//   }
+  button {
+    background: $amber;
+    padding: 5px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  body {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    background: $stone900;
+    color: $stone300;
+  }
+  a:link,
+  a:visited {
+    color: $stone100;
+    text-decoration: none;
+  }
+  a:hover {
+    color: $amber;
+  }
+  .App {
+    width: 100%;
+    min-height: 100vh;
+    @include flexbox(column, stretch, space-between, 0);
+  }
+  
+  header {
+    padding: 30px 0px;
+    background: $stoneBlack;
+  }
+  main {
+    padding: 0px 0px;
+    flex: 1;
+  }
+  footer {
+    padding: 30px 0px;
+    background: $stoneBlack;
+    p {
+      font-size: 14px;
+    }
+  }
+  .wrapper {
+    width: 100%;
+    max-width: 1280px;
+    padding: 0px 20px;
+    margin: 0px auto;
+  }
+  .no-outline:focus {
+    outline: none;
+  }
+  
+  //App header
+  .appHeader {
+    @include flexbox(row, center, space-between, 20px);
+    .headerLeft {
+      @include flexbox(row, stretch, space-between, 20px);
+      flex: 1;
+      .favCount {
+        height: 100%;
+        font-weight: 700;
+        position: relative;
+        @include flexbox(row, center, space-between, 5px);
+        &:hover {
+          opacity: 0.8;
+        }
+        .count {
+          position: absolute;
+          right: 0;
+          top: 0px;
+          font-size: 12px;
+          padding: 0px 5px;
+          background: $amber;
+          color: $stone800;
+          @include rounded;
+        }
+      }
+    }
+  }
+  
+  // App footer
+  .appFooter {
+    text-align: center;
+  }
+  
+  //searchBox
+  .searchBox {
+    position: relative;
+    border-radius: 5px;
+    background: $stone700;
+    width: 100%;
+    max-width: 300px;
+    .searchField {
+      padding: 10px 10px;
+      color: $stone100;
+      border: none;
+      background: transparent;
+      width: 100%;
+    }
+    .resultBox {
+      position: absolute;
+      z-index: 100;
+      top: 90%;
+      right: 0;
+      width: 100%;
+      max-height: 400px;
+      background: $stone700;
+      overflow: hidden;
+      overflow-y: scroll;
+      border-radius: 0px 0px 5px 5px;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      .loading {
+        padding: 20px;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+        li {
+          padding: 10px 10px;
+          border-bottom: 1px solid $stone800;
+  
+          &:hover {
+            background: $stone800;
+          }
+          @include flexbox(row, center, flex-start, 10px);
+          img {
+            max-width: 48px;
+          }
+          h4 {
+            color: $stone100;
+            line-height: 1.2;
+            font-size: 16px;
+          }
+          p {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+  
+  // section title
+  .sectionTitle {
+    text-transform: uppercase;
+    color: $stone100;
+    padding: 30px 0px;
+    font-size: 20px;
+    color: $amber;
+  }
+  
+  //Gallery
+  .gallery {
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    padding: 30px 0px;
+    border-bottom: 1px solid $stone700;
+    border-top: 1px solid $stone700;
+  }
+  
+  //Pagination
+  .pagination {
+    margin: 30px 0px;
+    @include flexbox(row, center, space-between, 10px);
+    button {
+      background: $amber;
+      padding: 5px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      &:disabled {
+        opacity: 0.3;
+      }
+    }
+  }
+  
+  //Moviecard
+  .movieCard {
+    .moviePoster {
+      @include rounded;
+      cursor: pointer;
+    }
+    .movieCardFooter {
+      padding: 20px 0px 0px 0px;
+      display: grid;
+      grid-template-columns: auto 24px;
+      gap: 10px;
+      h2.movieCardTitle {
+        font-size: 16px;
+        line-height: 1.2;
+        color: $stone100;
+        margin: 0px 0px 5px 0px;
+      }
+      p.movieCardRating {
+        font-size: 14px;
+        background: url(../Assets/star.svg) no-repeat;
+        background-size: 14px;
+        background-position: center left;
+        padding-left: 20px;
+      }
+      .favButton {
+        cursor: pointer;
+      }
+    }
+  }
+  
+  //Favorite Button
+  .favoriteButton {
+    color: $amber;
+  }
+  
+  //Movie Slider
+  .movieSlider {
+    background: $stone800;
+    .splide__track {
+      padding: 0px 0px;
+    }
+    .splide__slide {
+      opacity: 0.7;
+      filter: grayscale(80);
+      transition: all 300ms;
+      // @include rounded;
+      .slideCaption {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        padding: clamp(1.75rem, 5.081vw + 0.435rem, 4.5rem);
+        width: 100%;
+        background: rgb(0, 0, 0);
+        background: linear-gradient(
+          0deg,
+          rgba(0, 0, 0, 0.8) 0%,
+          rgba(12, 9, 7, 0) 90%
+        );
+        h2 {
+          @include fluidType();
+          color: $stone100;
+          transition: all 300ms;
+          transform: translateY(40px);
+          opacity: 0;
+          span {
+            backdrop-filter: blur(3);
+          }
+        }
+      }
+    }
+    .splide__slide.is-active {
+      opacity: 1;
+      filter: grayscale(0) saturate(1);
+      img {
+        opacity: 0.8;
+      }
+      .slideCaption {
+        h2 {
+          transform: translateY(0px);
+          opacity: 1;
+        }
+      }
+    }
+  }
+  
+  //Movie Page
+  
+  .moviePage {
+    min-height: 100vh;
+    background-size: cover;
+    background-position: top center;
+    position: relative;
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      inset: 0;
+      background: rgb(49, 47, 56);
+      background: linear-gradient(
+        0deg,
+        rgba(49, 47, 56, 1) 50%,
+        rgba(49, 47, 56, 0.5) 95%
+      );
+    }
+    .movieContent {
+      position: relative;
+      z-index: 10;
+      display: grid;
+      grid-template-columns: 2fr 5fr;
+      gap: 30px;
+      padding-top: 33vh;
+      .moviePoster {
+        img {
+          @include rounded;
+        }
+      }
+      .movieInfo {
+        padding: 30px 0px;
+        .movieTitle {
+          padding-bottom: 30px;
+          border-bottom: 1px solid $stone700;
+          h1 {
+            @include fluidType;
+            color: $stone100;
+            line-height: 1;
+            margin-bottom: 10px;
+          }
+          h3 {
+            font-weight: normal;
+          }
+        }
+        .moviePlot {
+          padding: 30px 0px;
+        }
+        .movieDetails {
+          .movieDetailsItem {
+            display: grid;
+            grid-template-columns: 1fr 4fr;
+            border-bottom: 1px solid $stone700;
+            padding: 10px 0px;
+            align-items: center;
+            grid-gap: 10px;
+            h3 {
+              color: $stone100;
+            }
+            span {
+              margin: 0px 10px 0px 0px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .notFound {
+    padding: 50px 0px;
+    text-align: center;
+    h1 {
+      margin-bottom: 20px;
+      color: $stone100;
+      @include fluidType;
+    }
+    button {
+      background: $amber;
+      padding: 5px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  }
+  
+  @media screen and (max-width: 600px) {
+    .appHeader {
+      @include flexbox(column, stretch, center, 10px);
+      .siteHeader {
+        @include flexbox(row, stretch, space-between, 20px);
+      }
+    }
+    .searchBox {
+      max-width: 600px;
+    }
+    .moviePage .movieContent {
+      padding-top: 30px;
+      grid-template-columns: 1fr;
+    }
+  }
