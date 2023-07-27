@@ -4,6 +4,7 @@ import Wrapper from "./Wrapper";
 import axios from "axios";
 import Pagination from "./Pagination";
 import Loader from './Loader'
+import ErrorMessage from "./Error";
 function Main() {
   const [popMovies, setMovies] = useState([]);
   const [Page, setPage] = useState(1);
@@ -13,7 +14,7 @@ function Main() {
   useEffect(() => {
     axios({
       method: "get",
-      url: "https://api.themoviedb.org/3/movie/popular",
+      url: "https://api.themoviedb.org/3/movie/popular1",
       params: {
         api_key: "0ada35bf73cf143eda08f5ff4af625f9",
         page: Page,
@@ -38,15 +39,17 @@ function Main() {
       </div>
       <Wrapper>
         <h2 className="sectionTitle">Popular Movies </h2>
-        <div className="gallery">
-        {!!Error?(<h1>{Error}</h1>) :(Loading ? (
+        {Error && (<ErrorMessage Error={Error}/>)}
+        {!Error&&(Loading ? (
             <Loader/>
           ) : (
-            popMovies?.map((movie) => {
+            <div className="gallery">
+            {popMovies?.map((movie) => {
               return <Moviecard key={movie.id} e={movie} />;
-            })
+            })}
+            </div>
           ))}
-        </div>
+        
         <Pagination total={TotalPages} page={Page} setPage={setPage} />
       </Wrapper>
     </main>

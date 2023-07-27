@@ -3,10 +3,7 @@
 @import "mixins";
 
 // App styles
-.loader {
- color: $amber !important;
- background-color: $amber;
-}
+
 body {
   font-family: "Plus Jakarta Sans", sans-serif;
   background: $stone900;
@@ -491,4 +488,19 @@ footer {
       padding-top: 30px;
       grid-template-columns: 1fr;
     }
+  }
+
+  .loader {
+    display: flex;
+    padding: 2em 0;
+    justify-content: center;
+  }
+  .errorMessage {
+    border: 1px solid crimson;
+    background-color: rgba(crimson,0.1);
+    padding: 2em 0;
+    margin: 3em 0;
+    text-align: center;
+    @include rounded;
+    color: white;
   }
