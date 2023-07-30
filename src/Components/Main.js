@@ -5,6 +5,7 @@ import axios from "axios";
 import Pagination from "./Pagination";
 import Loader from './Loader'
 import ErrorMessage from "./Error";
+import Slider from "./Slider";
 function Main() {
   const [popMovies, setMovies] = useState([]);
   const [Page, setPage] = useState(1);
@@ -34,9 +35,7 @@ function Main() {
 
   return (
     <main>
-      <div className="movieSlider">
-        {/* <p style={{ textAlign: "center" }}>Movie slider goes here</p> */}
-      </div>
+      {Page===1 &&<Slider/>}
       <Wrapper>
         <h2 className="sectionTitle">Popular Movies </h2>
         {Error && (<ErrorMessage Error={Error}/>)}
