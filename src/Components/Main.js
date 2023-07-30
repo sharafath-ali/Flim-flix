@@ -14,7 +14,7 @@ function Main() {
   useEffect(() => {
     axios({
       method: "get",
-      url: "https://api.themoviedb.org/3/movie/popular1",
+      url: "https://api.themoviedb.org/3/movie/popular",
       params: {
         api_key: "0ada35bf73cf143eda08f5ff4af625f9",
         page: Page,
