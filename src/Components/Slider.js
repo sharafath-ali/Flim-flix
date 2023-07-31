@@ -3,9 +3,12 @@ import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
 import axios from 'axios';
 import { useEffect,useState } from 'react';
+import Loader from './Loader';
 
 function Slider() {
   const [popMovies, setMovies] = useState([]);
+  const [Loading, setLoading] = useState(true);
+  const [Error, setError] = useState('');
   useEffect(() => {
     axios({
       method: "get",
@@ -17,33 +20,24 @@ function Slider() {
     })
       .then(({ data }) => {
         setMovies(data.results);
+        setLoading(false);
       })
       .catch((e) => {
         console.log(e.message);
-        // setLoading(false);
-        // setError(e.message);
+         setLoading(false);
+         setError(e.message);
       });
   }, []);
   return (
     <div className='movieSlider'>
+        {Loading? <Loader/>:(
         <Splide>
-        {popMovies.map((e)=>{
-        <SplideSlide><img
-          className="moviePoster"
+        {popMovies.map((e)=>{return(
+        <SplideSlide key={e.id}><img
           src={`https://image.tmdb.org/t/p/original/${e.backdrop_path}`}
           alt=""
-        /></SplideSlide>})}
-        {/* <SplideSlide><img
-          className="moviePoster"
-          src={`https://image.tmdb.org/t/p/w500/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg`}
-          alt=""
-        /></SplideSlide>
-        <SplideSlide><img
-          className="moviePoster"
-          src={`https://image.tmdb.org/t/p/w500/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg`}
-          alt=""
-        /></SplideSlide> */}
-        </Splide>
+        /></SplideSlide>)})}
+        </Splide>)}
     </div>
   )
 }
