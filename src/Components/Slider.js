@@ -29,15 +29,34 @@ function Slider() {
          setError(e.message);
       });
   }, []);
+
+  let splideOptions = {
+    heightRatio: 0.5,
+    pagination: true,
+    speed: 500,
+    cover: true,
+    padding: "15vw",
+    breakpoints: {
+      640: {
+        heightRatio: 0.54,
+        arrows: false,
+        pagination: true,
+        padding: "0",
+      },
+    },
+  };
   return (
     <div className='movieSlider'>
         {Error?<Error/>:(Loading? <Loader/>:(
-        <Splide>
+        <Splide options={splideOptions}>
         {popMovies.map((e)=>{return(
         <SplideSlide key={e.id}><img
-          src={`https://image.tmdb.org/t/p/original/${e.backdrop_path}`}
-          alt=""
-        /></SplideSlide>)})}
+          src={`https://image.tmdb.org/t/p/w1280/${e.backdrop_path}`}
+          alt={e.title}
+        /> <div class="slideCaption">
+        <h2>{e.title}</h2>
+        </div>
+        </SplideSlide>)})}
         </Splide>))}
     </div>
   )
