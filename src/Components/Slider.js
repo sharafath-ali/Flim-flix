@@ -4,6 +4,7 @@ import '@splidejs/react-splide/css';
 import axios from 'axios';
 import { useEffect,useState } from 'react';
 import Loader from './Loader';
+import Error from './Error';
 
 function Slider() {
   const [popMovies, setMovies] = useState([]);
@@ -30,14 +31,14 @@ function Slider() {
   }, []);
   return (
     <div className='movieSlider'>
-        {Loading? <Loader/>:(
+        {Error?<Error/>:(Loading? <Loader/>:(
         <Splide>
         {popMovies.map((e)=>{return(
         <SplideSlide key={e.id}><img
           src={`https://image.tmdb.org/t/p/original/${e.backdrop_path}`}
           alt=""
         /></SplideSlide>)})}
-        </Splide>)}
+        </Splide>))}
     </div>
   )
 }
