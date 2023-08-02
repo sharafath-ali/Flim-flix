@@ -9,7 +9,6 @@ import { useFetch } from '../Hooks/useFetch';
 
 function Slider() {
   const [Data,Error,Loading]=useFetch("movie/now_playing",{Page:1});
-
   let splideOptions = {
     heightRatio: 0.5,
     pagination: true,
@@ -29,7 +28,7 @@ function Slider() {
     <div className='movieSlider'>
         {Error?<Error/>:(Loading? <Loader/>:(
         <Splide options={splideOptions}>
-        {Data.map((e)=>{return(
+        {Data?.results?.map((e)=>{return(
         <SplideSlide key={e.id}><img
           src={`https://image.tmdb.org/t/p/w1280/${e.backdrop_path}`}
           alt={e.title}

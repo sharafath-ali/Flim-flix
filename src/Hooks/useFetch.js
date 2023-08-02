@@ -2,10 +2,11 @@ import { useEffect,useState } from 'react';
 import axios from 'axios';
 
 
-export function useFetch(url,Page={}) {
+export function useFetch(url,customparam={}) {
     const [Loading, setLoading] = useState(true);
     const [Error, setError] = useState("");
     const [Data,setData]=useState([])
+
     useEffect(() => {
         axios({
           method: "get",
@@ -13,11 +14,11 @@ export function useFetch(url,Page={}) {
           url,
           params: {
             api_key: "0ada35bf73cf143eda08f5ff4af625f9",
-            ...Page
+            page: customparam.Page,
           },
         })
           .then(({ data }) => {
-            setData(data.results);
+            setData(data);
             setLoading(false);
           })
           .catch((e) => {
@@ -25,7 +26,7 @@ export function useFetch(url,Page={}) {
              setLoading(false);
              setError(e.message);
           });
-      }, []);
+      }, [customparam.Page,url]);
 
       return [Data,Error,Loading];
 }
