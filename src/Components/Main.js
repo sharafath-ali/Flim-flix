@@ -1,35 +1,11 @@
 import React, { useEffect, useState ,useMemo } from "react";
-import Moviecard from "./Moviecard";
-import Wrapper from "./Wrapper";
-import axios from "axios";
-import Pagination from "./Pagination";
-import Loader from './Loader'
-import ErrorMessage from "./Error";
-import Slider from "./Slider";
-import { useFetch } from "../Hooks/useFetch";
-function Main() {
-  const [Page, setPage] = useState(1);
-  const [Data,Error,Loading]=useFetch("movie/popular",{Page});
-  const {results}=Data
+
+function Main({children}) {
+  
 
   return (
     <main>
-      {Page===1 &&<Slider/>}
-      <Wrapper>
-        <h2 className="sectionTitle">Popular Movies </h2>
-        {Error && (<ErrorMessage Error={Error}/>)}
-        {!Error&&(Loading ? (
-            <Loader/>
-          ) : (
-            <div className="gallery">
-            {results?.map((movie) => {
-              return <Moviecard key={movie.id} e={movie} />;
-            })}
-            </div>
-          ))}
-        
-        <Pagination total={Data?.total_pages} page={Page} setPage={setPage} />
-      </Wrapper>
+      {children}
     </main>
   );
 }
