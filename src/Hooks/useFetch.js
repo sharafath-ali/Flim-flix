@@ -14,7 +14,7 @@ export function useFetch(url,customparam={}) {
           url,
           params: {
             api_key: "0ada35bf73cf143eda08f5ff4af625f9",
-            page: customparam.Page,
+            ...customparam,
           },
         })
           .then(({ data }) => {
@@ -26,7 +26,7 @@ export function useFetch(url,customparam={}) {
              setLoading(false);
              setError(e.message);
           });
-      }, [customparam.Page,url]);
+      }, [customparam.page,customparam.query,url]);
 
       return [Data,Error,Loading];
 }

@@ -9,7 +9,7 @@ import { useFetch } from '../Hooks/useFetch';
 function Home() {
 
     const [Page, setPage] = useState(1);
-    const [Data, Error, Loading] = useFetch("movie/popular", { Page });
+    const [Data, Error, Loading] = useFetch("movie/popular", { page : Page });
     const { results } = Data
     
     return (
