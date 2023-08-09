@@ -5,9 +5,7 @@ import { useNavigate } from 'react-router-dom';
 function SearchBox() {
     const navigate=useNavigate()
     const [Query, setQuery] = useState('');
-    const [Data, Error, Loading] = useFetch("search/movie", { query : Query });
-    console.log(Data);
-    console.log(Query);
+    const [Data, Error, Loading] = useFetch("search/movie", { query : Query }); 
     return (
         <div className="searchBox">
             <input className="searchField" value={Query} type="search" onChange={(e)=>setQuery(e.target.value)}/>
