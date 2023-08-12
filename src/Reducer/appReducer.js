@@ -1,14 +1,9 @@
-export const initialState = {
-    favorites: []
+export const initialState ={   
+     favorites: [],
 };
-export const Reducer=(state, action) =>{
-    switch (action.type) {
-        case 'f':
-        return '1'
-        break;
-       
-        default:
-    
-            return state; 
+export const reducer=(state, {type,payload}) =>{
+    switch (type) {
+        case 'add':
+        return  {...state,favorites:[...state.favorites,payload]};
     }
-}
+};

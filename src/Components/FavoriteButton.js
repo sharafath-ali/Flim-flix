@@ -1,10 +1,24 @@
-import React from 'react'
+import React,{useState,useContext} from 'react'
 import heartfilled from '../Assets/heart-filled.svg'
 import heartlined from '../Assets/heart-lined.svg'
-function FavoriteButton() {
-  return (
-    <div className="favButton"><img src={heartfilled} width='15px'/></div>
-  )
-}
+import { AppContext } from '../Context/appContext'
+const FavoriteButton = ({movie}) => {
+  const { state,dispatch} = useContext(AppContext);
 
-export default FavoriteButton
+  const [isFavorite, setIsFavorite] = useState(false);
+  const handleClick=()=>{
+    setIsFavorite((prev)=>!prev);
+    if(isFavorite){
+      dispatch({type:'add',payload:movie
+    });
+    }
+    else{
+      //dispatch('remove',movie.id)
+    }
+  }
+  return (
+    <div className="favButton" onClick={handleClick}><img  src={isFavorite?heartfilled:heartlined} width='15px'/></div>
+  );
+};
+
+export default FavoriteButton;

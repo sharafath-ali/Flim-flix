@@ -1,18 +1,16 @@
-import { createContext ,useReducer} from "react";
-// import {initialState, Reducer} from '../Reducer/appReducer';
-export const appContext=createContext();
+import { createContext ,useState,useReducer} from "react";
+import { initialState,reducer} from '../Reducer/appReducer';
 
+export const AppContext=createContext();
 
+const AppContextWrapper=({children})=>{
+  const [isFavorite, setIsFavorite] = useState(false);
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const contextValue = {isFavorite ,setIsFavorite };
 
-
-const appContextWrapper=({children})=>{
-  
-// const [state, dispatch] = useReducer(Reducer, initialState);
-// const contextValue = {state, dispatch};
-  <appContext.Provider>
-     {/* value={contextValue}> */}
+ return(<AppContext.Provider value={contextValue}>
     {children}
-  </appContext.Provider>
+  </AppContext.Provider>)
 };
 
-export default appContextWrapper
+export default AppContextWrapper;
