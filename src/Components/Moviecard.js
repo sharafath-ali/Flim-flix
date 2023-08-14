@@ -19,7 +19,7 @@ function Moviecard(p) {
             <p className="movieCardRating">{e.vote_average}</p>
           </div>
           {/* <div className="favButton">#</div> */}
-          {/* <FavoriteButton movie={e}/> */}
+          <FavoriteButton movie={e}/>
         </div>
       {/* </div> */}
       </div>

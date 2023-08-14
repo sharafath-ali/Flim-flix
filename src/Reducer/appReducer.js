@@ -3,6 +3,7 @@ export const initialState = {
     Page: 1,
 };
 export const reducer = (state, { type, payload }) => {
+    console.log('g')
     switch (type) {
         case 'add':
             return { ...state, favorites: [...state.favorites, payload] };
