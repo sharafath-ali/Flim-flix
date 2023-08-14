@@ -5,7 +5,6 @@ export const AppContext = createContext();
 
 function AppGlobalState({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
-  console.log(state)
   const contextValue = { dispatch };
   
   return (

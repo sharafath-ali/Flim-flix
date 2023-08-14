@@ -1,8 +1,10 @@
-import React from 'react'
+import React,{useContext} from 'react'
+import { AppContext } from '../Context/AppGlobalState'
 
 function Favorites() {
+  const { state, dispatch } = useContext(AppContext);
   return (
-    <div>Favorites</div>
+    <div>{state?.Favorites?.map((E)=>{return E.title})}</div>
   )
 }
 
