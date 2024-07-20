@@ -1,24 +1,26 @@
-import React, { useState, useContext } from 'react'
-import heartfilled from '../Assets/heart-filled.svg'
-import heartlined from '../Assets/heart-lined.svg'
-import { AppContext } from '../Context/AppGlobalState'
+import React, { useState, useContext } from "react";
+import heartfilled from "../Assets/heart-filled.svg";
+import heartlined from "../Assets/heart-lined.svg";
+import { AppContext } from "../Context/AppGlobalState";
 const FavoriteButton = ({ movie }) => {
   const { state, dispatch } = useContext(AppContext);
 
-  const [isFavorite, setIsFavorite] = useState(false);
+  let favorited = state?.favorites?.some((item) => item?.id === movie?.id);
+
   const handleClick = () => {
-    setIsFavorite((prev) => !prev);
-    if (isFavorite) {
+    if (favorited) {
       dispatch({
-        type: 'add', payload: movie.id
+        type: "REMOVE_FAVORITE",
+        payload: movie.id,
       });
+    } else {
+      dispatch({ type: "ADD_FAVORITE", payload: movie });
     }
-    else {
-      dispatch({ type: 'remove', payload: movie.id });
-    }
-  }
+  };
   return (
-    <div className="favButton" onClick={handleClick}><img src={isFavorite ? heartfilled : heartlined} width='15px' /></div>
+    <div className="favButton" onClick={handleClick}>
+      <img src={favorited ? heartfilled : heartlined} width={24} />
+    </div>
   );
 };
 
